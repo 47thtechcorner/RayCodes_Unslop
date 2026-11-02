@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Output C: Real-Time AI Workflow Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Output C: Authentic Unslop Redesign of Input C's Product Website
+       Product: Real-Time AI Workflow Automation Engine (Same product from Input C)
+       
+       What Changed (Unslop Design Standard):
+       1. Kept the exact product features: Real-time AI workflow triggers, multi-agent automations, tool integrations.
+       2. Cleaned copy:
+          - Input C badge: "✨ NEXT-GEN ARTIFICIAL INTELLIGENCE 2.0 ✨" -> "WORKFLOW AUTOMATION 2.0"
+          - Input C headline: "Supercharge Your Seamless Workflow With Magical Real-Time AI! 🚀" -> "Automate multi-step workflows with real-time AI" (no exclamation mark, no "Supercharge", no "magical", no rocket emoji)
+          - Input C subhead: "Unlock 100x exponential growth using our revolutionary, game-changing neural ecosystem built for modern elite visionaries." -> "Connect your apps, trigger intelligent agent actions, and monitor live execution pipelines with sub-second latency."
+          - Input C buttons: "GET STARTED FREE 🚀" & "BOOK VIP DEMO ✨" -> Single primary solid "Start free" + calm secondary "Book a demo →" text link.
+       3. Replaced floating 3D glass placeholder cubes/orbs with an authentic interactive product preview: A live interactive node workflow simulator (Webhook Trigger -> AI Classifier -> Slack / Database Action) with simulated live execution.
+       4. Quiet Chrome: Built on a deep obsidian neutral ramp (#090b10, #10141f, #151a28) with 1px hairline borders (rgba(255,255,255,0.08)).
+    */
+    :root {
+      --bg-base: #090b10;
+      --bg-surface: #10141f;
+      --bg-card: #151a28;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-subtle: rgba(255, 255, 255, 0.04);
+      --text: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-terra: #d97757;
+      --accent-terra-bg: rgba(217, 119, 87, 0.12);
+      --accent-mint: #10e583;
+      --accent-mint-bg: rgba(16, 229, 131, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-base);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px 48px;
+      line-height: 1.5;
+    }
+
+    /* Minimal Navbar */
+    header.site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .brand-mark {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--accent-terra);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-login {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .nav-login:hover { background: rgba(255, 255, 255, 0.1); }
+
+    /* Asymmetric Hero Split Layout */
+    main.hero-container {
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+      margin: 40px auto;
+      max-width: 1240px;
+      width: 100%;
+    }
+
+    /* Left: Clean Space & Grounded Headline */
+    .hero-text-col {
+      text-align: left;
+    }
+    .category-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--accent-terra);
+      background: var(--accent-terra-bg);
+      border: 1px solid rgba(217, 119, 87, 0.25);
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.16;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+    p.hero-lead {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .btn-primary {
+      background: #ffffff;
+      color: #090b10;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-primary:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 10px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .btn-secondary:hover { color: #ffffff; }
+
+    /* Performance Metrics Strip */
+    .proof-strip {
+      display: flex;
+      gap: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .proof-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .proof-lbl {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    /* Right: Real Interactive Product Workflow Preview (Replaces Floating 3D Cubes) */
+    .preview-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+    }
+    .window-header {
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .window-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+    .run-workflow-btn {
+      background: var(--accent-mint-bg);
+      border: 1px solid rgba(16, 229, 131, 0.3);
+      color: var(--accent-mint);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .run-workflow-btn:hover { background: rgba(16, 229, 131, 0.2); }
+
+    /* Interactive Workflow Canvas */
+    .workflow-canvas {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .workflow-node {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .workflow-node.active-node {
+      border-color: rgba(16, 229, 131, 0.4);
+      background: rgba(16, 229, 131, 0.04);
+    }
+    .node-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .node-index {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+    .workflow-node.active-node .node-index {
+      background: var(--accent-mint);
+      color: #090b10;
+      font-weight: 700;
+    }
+    .node-details {
+      line-height: 1.3;
+    }
+    .node-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .node-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+    .node-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .node-status.done {
+      background: var(--accent-mint-bg);
+      color: var(--accent-mint);
+    }
+    .node-status.waiting {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    /* Live Output Terminal Bar */
+    .status-bar {
+      background: #06070a;
+      border-top: 1px solid var(--border);
+      padding: 14px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-text { color: var(--text-secondary); }
+    .status-code { color: var(--accent-terra); }
+
+    /* Footer */
+    footer.site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="site-nav">
+    <div class="nav-brand">
+      <div class="brand-mark">W</div>
+      <span>Workflow Engine</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Features</a>
+      <a href="#">Integrations</a>
+      <a href="#">Documentation</a>
+      <button class="nav-login">Sign in</button>
+    </div>
+  </header>
+
+  <!-- Asymmetric Split Hero -->
+  <main class="hero-container">
+
+    <!-- Left Column: Cleaned, Grounded Copy (Transformed from Input C) -->
+    <div class="hero-text-col">
+      <div class="category-chip">WORKFLOW AUTOMATION 2.0</div>
+      <h1>Automate multi-step workflows with real-time AI</h1>
+      <p class="hero-lead">
+        Connect your apps, trigger intelligent agent actions, and monitor live execution pipelines with sub-second latency. No complex setup or brittle scripts.
+      </p>
+
+      <div class="cta-group">
+        <button id="primary-cta" class="btn-primary">Start free</button>
+        <a href="#" class="btn-secondary">Book a demo →</a>
+      </div>
+
+      <div class="proof-strip">
+        <div class="proof-item">
+          <span class="proof-num">42ms</span>
+          <span class="proof-lbl">Average step latency</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">99.98%</span>
+          <span class="proof-lbl">Execution SLA</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">100+</span>
+          <span class="proof-lbl">Native integrations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Real Product Workflow Canvas (Replaces Abstract 3D Cubes) -->
+    <div class="preview-window">
+      <div class="window-header">
+        <div class="window-dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="window-title">customer-support-agent.flow</div>
+        <button id="test-run-btn" class="run-workflow-btn">
+          <span>▶ TEST RUN</span>
+        </button>
+      </div>
+
+      <div class="workflow-canvas">
+        <div id="flow-node-1" class="workflow-node active-node">
+          <div class="node-left">
+            <div class="node-index">01</div>
+            <div class="node-details">
+              <div class="node-title">Webhook Event Trigger</div>
+              <div class="node-desc">Receives incoming customer ticket payload</div>
+            </div>
+          </div>
+          <span class="node-status done">RESOLVED • 2ms</span>
+        </div>
+
+        <div id="flow-node-2" class="workflow-node">
+          <div class="node-left">
+            <div class="node-index">02</div>
+            <div class="node-details">
+              <div class="node-title">AI Intent & Sentiment Classifier</div>
+              <div class="node-desc">Evaluates urgency, category, and triage level</div>
+            </div>
+          </div>
+          <span id="node-2-status" class="node-status waiting">STANDBY</span>
+        </div>
+
+        <div id="flow-node-3" class="workflow-node">
+          <div class="node-left">
+            <div class="node-index">03</div>
+            <div class="node-details">
+              <div class="node-title">Automated Action Dispatch</div>
+              <div class="node-desc">Updates CRM ticket and alerts support channel</div>
+            </div>
+          </div>
+          <span id="node-3-status" class="node-status waiting">STANDBY</span>
+        </div>
+      </div>
+
+      <div class="status-bar">
+        <span class="status-text">Pipeline status: <span id="pipeline-status" style="color: var(--accent-mint);">READY (Click 'Start free' or '▶ TEST RUN')</span></span>
+        <span class="status-code">status: 200 OK</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>Production Architecture: Quiet Chrome & Real Product Preview</span>
+    <span>Workflow Automation Platform</span>
+  </footer>
+
+  <script>
+    const primaryCta = document.getElementById('primary-cta');
+    const testRunBtn = document.getElementById('test-run-btn');
+    const node2 = document.getElementById('flow-node-2');
+    const node2Status = document.getElementById('node-2-status');
+    const node3 = document.getElementById('flow-node-3');
+    const node3Status = document.getElementById('node-3-status');
+    const pipelineStatus = document.getElementById('pipeline-status');
+
+    function runWorkflow() {
+      pipelineStatus.textContent = "EXECUTING STEP 02: AI INTENT CLASSIFICATION...";
+      pipelineStatus.style.color = "#d97757";
+      node2.classList.add('active-node');
+      node2Status.className = "node-status done";
+      node2Status.textContent = "PROCESSING...";
+
+      setTimeout(() => {
+        node2Status.textContent = "RESOLVED • 18ms";
+        pipelineStatus.textContent = "EXECUTING STEP 03: DISPATCHING ACTION...";
+        node3.classList.add('active-node');
+        node3Status.className = "node-status done";
+        node3Status.textContent = "PROCESSING...";
+
+        setTimeout(() => {
+          node3Status.textContent = "RESOLVED • 22ms";
+          pipelineStatus.textContent = "PIPELINE COMPLETED SUCCESSFULLY • 42ms TOTAL";
+          pipelineStatus.style.color = "#10e583";
+        }, 500);
+      }, 500);
+    }
+
+    primaryCta.addEventListener('click', runWorkflow);
+    testRunBtn.addEventListener('click', runWorkflow);
+  </script>
+
+</body>
+</html>

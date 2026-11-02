@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Output A: Unslop Refined Metrics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Output A: Unslop Principles Applied to Input A
+       - World & Tone: Graphite neutral ramp with subtle warm tint
+       - Spacing: Strict 4px/8px scale (paddings: 24px, gaps: 16px/24px)
+       - Color: Quiet dark chrome (#0c0e12, #14171f), 1px hairline borders (rgba(255,255,255,0.07))
+       - One Bright Moment: The telemetry bar chart with Emerald (#10e583) and Terracotta (#d97757)
+       - Copy: Specific, grounded, no exclamation marks or emoji shouting
+       - Typography: Tabular figures, 400/500/600 weights, sentence case
+    */
+    :root {
+      --bg-base: #0c0e12;
+      --bg-card: #131720;
+      --bg-card-hover: #181d29;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(255, 255, 255, 0.16);
+      --text: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-mint: #10e583;
+      --accent-terra: #d97757;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-base);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    
+    /* Top Header Bar */
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-left h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .header-left p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent-mint);
+      background: rgba(16, 229, 131, 0.08);
+      border: 1px solid rgba(16, 229, 131, 0.2);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-mint);
+    }
+
+    /* 3-Column Key Metric Cards */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: border-color 0.2s ease;
+    }
+    .metric-card:hover {
+      border-color: var(--border-focus);
+    }
+    .metric-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .metric-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .metric-delta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent-mint);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .delta-sub {
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Main Content Area: Chart + Audit Drawer */
+    .analytics-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .legend-row {
+      display: flex;
+      gap: 16px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .swatch {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+    .swatch.mint { background: var(--accent-mint); }
+    .swatch.muted { background: #334155; }
+
+    /* Telemetry Chart: The Single Rich Moment */
+    .chart-container {
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      padding-top: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .chart-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    .bar-stack {
+      width: 100%;
+      max-width: 54px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 4px 4px 0 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+    }
+    .bar-fill {
+      width: 100%;
+      background: #334155;
+      transition: background 0.2s;
+    }
+    .bar-fill.active {
+      background: var(--accent-mint);
+    }
+    .chart-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    
+    /* Footer Audit Info */
+    .pass-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+    }
+    .tag-token {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-terra);
+      background: rgba(217, 119, 87, 0.08);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>Analytics Workspace</h1>
+      <p>Node telemetry and cluster distribution for November 2026</p>
+    </div>
+    <div class="header-meta">
+      <div class="live-status">
+        <span class="live-dot"></span>
+        <span>PRODUCTION ACTIVE</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cleaned 3-Column Metrics (snapped to 4px/8px scale, calm dark card chrome) -->
+  <section class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Settled revenue</div>
+      <div class="metric-value">$1,248,650</div>
+      <div class="metric-delta">+14.2% <span class="delta-sub">vs last period</span></div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Active cluster nodes</div>
+      <div class="metric-value">1,429</div>
+      <div class="metric-delta">+8 nodes <span class="delta-sub">rebalanced</span></div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Success rate</div>
+      <div class="metric-value">99.94%</div>
+      <div class="metric-delta" style="color: var(--accent-mint);">0.02% <span class="delta-sub">latency SLA</span></div>
+    </div>
+  </section>
+
+  <!-- Analytics Chart Panel: Rich Content Moment in Quiet Chrome -->
+  <section class="analytics-panel">
+    <div class="panel-header">
+      <div class="panel-title">Throughput distribution (req/sec)</div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="swatch mint"></span> Peak volume</div>
+        <div class="legend-item"><span class="swatch muted"></span> Baseline volume</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-col">
+        <div class="bar-stack"><div class="bar-fill" style="height: 48%;"></div></div>
+        <div class="chart-label">00:00</div>
+      </div>
+      <div class="chart-col">
+        <div class="bar-stack"><div class="bar-fill" style="height: 64%;"></div></div>
+        <div class="chart-label">04:00</div>
+      </div>
+      <div class="chart-col">
+        <div class="bar-stack"><div class="bar-fill" style="height: 52%;"></div></div>
+        <div class="chart-label">08:00</div>
+      </div>
+      <div class="chart-col">
+        <div class="bar-stack"><div class="bar-fill active" style="height: 94%;"></div></div>
+        <div class="chart-label">12:00</div>
+      </div>
+      <div class="chart-col">
+        <div class="bar-stack"><div class="bar-fill" style="height: 72%;"></div></div>
+        <div class="chart-label">16:00</div>
+      </div>
+      <div class="chart-col">
+        <div class="bar-stack"><div class="bar-fill" style="height: 58%;"></div></div>
+        <div class="chart-label">20:00</div>
+      </div>
+    </div>
+
+    <div class="pass-tag">
+      <span>Pass 01 Spacing & Pass 02 Color verified</span>
+      <span class="tag-token">Unslop Refined • WCAG 98%</span>
+    </div>
+  </section>
+
+</body>
+</html>

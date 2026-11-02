@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input B: Raw Navigation Shell (Vibecoded Slop)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    /* Classic AI Slop Architecture for Input B:
+       - Emojis in every single navigation link
+       - Loud uppercase tracked labels shouting
+       - Saturated gradients and neon box-shadows everywhere
+       - Arbitrary padding (23px, 17px, 11px)
+       - Rainbow status badges and glowing pills
+       - Full interactive tabs matching Output B but in pure AI slop style
+    */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 10% 20%, #2b0852, #0c041a 85%);
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      min-height: 100vh;
+    }
+
+    /* Slop Sidebar */
+    .sidebar {
+      width: 280px;
+      background: linear-gradient(180deg, #1d0938, #110424);
+      border: 2px solid #c084fc;
+      box-shadow: 0 0 30px rgba(192, 132, 252, 0.45), inset 0 0 15px rgba(236, 72, 153, 0.25);
+      border-radius: 24px;
+      padding: 23px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.4);
+    }
+    .brand-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 10px #ec4899);
+    }
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ec4899, #c084fc, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+    }
+    .nav-group-title {
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #f5d0fe;
+      margin: 16px 0 8px 10px;
+      text-shadow: 0 0 8px #c084fc;
+    }
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .nav-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #e9d5ff;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      background: rgba(168, 85, 247, 0.25);
+      border-color: #ec4899;
+      box-shadow: 0 0 16px rgba(236, 72, 153, 0.6);
+      color: #ffffff;
+    }
+    .nav-btn.active {
+      background: linear-gradient(90deg, rgba(236, 72, 153, 0.45), rgba(168, 85, 247, 0.55));
+      border-color: #f472b6;
+      color: #ffffff;
+      box-shadow: 0 0 22px rgba(236, 72, 153, 0.75);
+    }
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-badge {
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6);
+      color: #ffffff;
+      box-shadow: 0 0 10px #ec4899;
+    }
+
+    /* Slop User Footer */
+    .user-footer {
+      padding-top: 14px;
+      border-top: 1px solid rgba(168, 85, 247, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 6px;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      box-shadow: 0 0 12px #ec4899;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.8rem;
+    }
+
+    /* Slop Main Workspace */
+    .workspace-area {
+      flex: 1;
+      background: #15072b;
+      border: 2px solid #a855f7;
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.3);
+      border-radius: 24px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .slop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+      margin-bottom: 24px;
+    }
+    .slop-header h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #f472b6, #c084fc, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .slop-pill {
+      font-size: 0.76rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: linear-gradient(90deg, #ec4899, #a855f7);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.8);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Slop Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+      margin-bottom: 25px;
+    }
+    .slop-card {
+      background: linear-gradient(135deg, #240c42, #340f5e);
+      border: 1.5px solid #c084fc;
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.35);
+      border-radius: 18px;
+      padding: 19px 17px;
+    }
+    .card-label {
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f5d0fe;
+      margin-bottom: 8px;
+    }
+    .card-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 0 14px rgba(244, 114, 182, 0.7);
+      margin-bottom: 6px;
+    }
+    .card-meta {
+      font-size: 0.75rem;
+      color: #f472b6;
+      font-weight: 800;
+    }
+
+    /* Slop Data Table */
+    .slop-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .slop-table th {
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #d8b4fe;
+      padding: 11px 15px;
+      border-bottom: 2px solid #a855f7;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .slop-table td {
+      padding: 13px 15px;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+      color: #f5d0fe;
+    }
+    .slop-status {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+    }
+    .slop-status.hot { background: #ec4899; color: #fff; }
+    .slop-status.ultra { background: #8b5cf6; color: #fff; }
+
+    /* Hidden/Shown Panels */
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- Input B Slop Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand-box">
+        <div class="brand-icon">✨</div>
+        <div class="brand-name">NEXUS AI PRO™</div>
+      </div>
+
+      <div class="nav-group-title">CORE PLATFORM SUITE 🔥</div>
+      <ul class="nav-list">
+        <li>
+          <button class="nav-btn active" data-target="slop-dashboard">
+            <span class="item-left">📊 <span>EXECUTIVE DASHBOARD</span></span>
+            <span class="nav-badge">HOT 🔥</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-target="slop-automations">
+            <span class="item-left">⚡ <span>NEURAL AUTOMATIONS</span></span>
+            <span class="nav-badge">NEW ✨</span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-target="slop-analytics">
+            <span class="item-left">📈 <span>SMART ANALYTICS</span></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-target="slop-workspaces">
+            <span class="item-left">👥 <span>TEAM WORKSPACES</span></span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-group-title">SYSTEM CONFIGURATION ⚙️</div>
+      <ul class="nav-list">
+        <li>
+          <button class="nav-btn" data-target="slop-settings">
+            <span class="item-left">⚙️ <span>GLOBAL SETTINGS</span></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-btn" data-target="slop-vault">
+            <span class="item-left">🔒 <span>ENTERPRISE VAULT</span></span>
+            <span class="nav-badge">PRO 🚀</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="user-footer">
+      <div class="avatar">👑</div>
+      <div>
+        <div style="font-weight: 800; font-size: 0.85rem;">RAY (VIP)</div>
+        <div style="font-size: 0.72rem; color: #f472b6;">ULTRA ADMIN 🚀</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Input B Slop Main Content (Same Data as Output B, but in AI Slop Theme) -->
+  <main class="workspace-area">
+    
+    <!-- Dashboard Panel -->
+    <div id="slop-dashboard" class="view-panel active">
+      <div class="slop-header">
+        <div>
+          <h2>⚡ EXECUTIVE DASHBOARD OVERVIEW ⚡</h2>
+          <p style="color: #d8b4fe; font-size: 0.9rem;">Real-time hyper-neural cluster monitoring across the globe 🚀</p>
+        </div>
+        <span class="slop-pill">🔥 100% ULTRA OPTIMAL 🔥</span>
+      </div>
+
+      <div class="cards-grid">
+        <div class="slop-card">
+          <div class="card-label">🔥 ACTIVE PIPELINES</div>
+          <div class="card-value">28</div>
+          <div class="card-meta">⚡ +3 INITIALIZED TODAY</div>
+        </div>
+        <div class="slop-card">
+          <div class="card-label">⚡ AVERAGE LATENCY</div>
+          <div class="card-value">42ms</div>
+          <div class="card-meta">✨ ULTRA LIGHTNING SPEED</div>
+        </div>
+        <div class="slop-card">
+          <div class="card-label">💎 NODE THROUGHPUT</div>
+          <div class="card-value">12.4k</div>
+          <div class="card-meta">🚀 UNLOCKED PEAK FLOW</div>
+        </div>
+      </div>
+
+      <table class="slop-table">
+        <thead>
+          <tr><th>SERVICE</th><th>REGION</th><th>STATUS</th><th>UPTIME</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color: #fff; font-weight: 800;">⚡ Ingestion Gateway</td>
+            <td>us-east-1</td>
+            <td><span class="slop-status hot">🔥 BLAZING</span></td>
+            <td>99.98%</td>
+          </tr>
+          <tr>
+            <td style="color: #fff; font-weight: 800;">🧠 Neural Redline Worker</td>
+            <td>eu-central-1</td>
+            <td><span class="slop-status hot">✨ ONLINE</span></td>
+            <td>100.00%</td>
+          </tr>
+          <tr>
+            <td style="color: #fff; font-weight: 800;">🔮 Cache Rebalance Node</td>
+            <td>ap-southeast-1</td>
+            <td><span class="slop-status ultra">⚡ SYNCING</span></td>
+            <td>99.85%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Automations Panel -->
+    <div id="slop-automations" class="view-panel">
+      <div class="slop-header">
+        <div>
+          <h2>⚡ NEURAL AUTOMATIONS SUITE ✨</h2>
+          <p style="color: #d8b4fe;">Automated magical AI workflows running in the cloud 🚀</p>
+        </div>
+        <span class="slop-pill">6 ACTIVE RUNS 🔥</span>
+      </div>
+      <table class="slop-table">
+        <thead>
+          <tr><th>PIPELINE NAME</th><th>SCHEDULE</th><th>TRIGGER</th><th>ACTION</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:#fff; font-weight:800;">🤖 Nightly PR Unslop Lint</td><td>Daily @ 02:00 UTC</td><td>GitHub Webhook</td><td>Auto-redline CSS</td></tr>
+          <tr><td style="color:#fff; font-weight:800;">✨ WCAG Contrast Validator</td><td>On Commit</td><td>Git Push</td><td>Block failing PR</td></tr>
+          <tr><td style="color:#fff; font-weight:800;">🎬 Video Story Synthesizer</td><td>On Release</td><td>Manual / CLI</td><td>Render MP4 showcase</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Analytics Panel -->
+    <div id="slop-analytics" class="view-panel">
+      <div class="slop-header">
+        <div>
+          <h2>📈 SMART ANALYTICS & TELEMETRY 🌈</h2>
+          <p style="color: #d8b4fe;">Insane AI insights powered by next-gen algorithms 💎</p>
+        </div>
+        <span class="slop-pill">98% OPTIMAL ✨</span>
+      </div>
+      <div class="cards-grid">
+        <div class="slop-card"><div class="card-label">🔥 PIXELS PURGED</div><div class="card-value">1,420</div><div class="card-meta">4px grid applied</div></div>
+        <div class="slop-card"><div class="card-label">⚡ GLOWS REMOVED</div><div class="card-value">84</div><div class="card-meta">Hairline borders</div></div>
+        <div class="slop-card"><div class="card-label">💎 EMOJIS PURGED</div><div class="card-value">100%</div><div class="card-meta">Vector icons</div></div>
+      </div>
+    </div>
+
+    <!-- Workspaces Panel -->
+    <div id="slop-workspaces" class="view-panel">
+      <div class="slop-header">
+        <div>
+          <h2>👥 TEAM WORKSPACES & REPOS 🚀</h2>
+          <p style="color: #d8b4fe;">Collaborative AI developer hubs ⚡</p>
+        </div>
+        <span class="slop-pill">4 REPOSITORIES 🔥</span>
+      </div>
+      <table class="slop-table">
+        <thead>
+          <tr><th>WORKSPACE</th><th>BRANCH</th><th>STATUS</th><th>ACCESS</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:#fff; font-weight:800;">📁 frontend-core-app</td><td>main</td><td><span class="slop-status hot">🔥 COMPLIANT</span></td><td>Full Write</td></tr>
+          <tr><td style="color:#fff; font-weight:800;">📁 marketing-landing-v2</td><td>staging</td><td><span class="slop-status ultra">⚡ AUDITING</span></td><td>Full Write</td></tr>
+          <tr><td style="color:#fff; font-weight:800;">📁 design-tokens-npm</td><td>v1.4.0</td><td><span class="slop-status hot">✨ SYNCED</span></td><td>Read Only</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="slop-settings" class="view-panel">
+      <div class="slop-header">
+        <div>
+          <h2>⚙️ GLOBAL SETTINGS & AUDIT SPECS ⚡</h2>
+          <p style="color: #d8b4fe;">Configure your hyper-growth AI parameters 🚀</p>
+        </div>
+        <span class="slop-pill">PRO CONFIG 💎</span>
+      </div>
+      <div class="slop-card" style="margin-bottom: 16px;">
+        <div class="card-label">🔥 GRID SPACING MODE</div>
+        <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">Strict 4px / 8px Grid Enforcement</div>
+      </div>
+      <div class="slop-card">
+        <div class="card-label">⚡ CHROME STRATEGY</div>
+        <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">Graphite Neutral Ramp</div>
+      </div>
+    </div>
+
+    <!-- Vault Panel -->
+    <div id="slop-vault" class="view-panel">
+      <div class="slop-header">
+        <div>
+          <h2>🔒 ENTERPRISE SECURITY VAULT 💎</h2>
+          <p style="color: #d8b4fe;">Ultra encrypted military-grade AI keys 🛡️</p>
+        </div>
+        <span class="slop-pill">LOCKED 🔒</span>
+      </div>
+      <div class="slop-card">
+        <div class="card-label">🔑 ACTIVE VIP CREDENTIALS</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #f472b6; margin: 8px 0;">ANTIGRAVITY_SKILL_KEY_••••••••••••3F9A</div>
+        <div style="font-size: 0.8rem; color: #d8b4fe;">Scoped exclusively to workspace design sanitization passes.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.nav-btn');
+    const panels = document.querySelectorAll('.view-panel');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const activePanel = document.getElementById(target);
+        if (activePanel) activePanel.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Output B: Unslop Refined Interactive Platform Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Unslop Design Applied to Input B (Nexus AI Pro Navigation Shell):
+       1. Spacing: 34px dense navigation rows, 2px item gap, 4px/8px modular layout
+       2. Color: Graphite neutral ramp (#0b0d11, #11141c, #161a24), borders at 8% opacity
+       3. Icons: Emojis replaced with 16px/1.5-stroke monochrome SVG line icons
+       4. Copy: Shouty uppercase tracked titles normalized to calm sentence case
+       5. Rich Moment: Interactive content router switching live panel views with keyboard shortcuts (Cmd+1..4)
+    */
+    :root {
+      --bg-base: #090b10;
+      --bg-surface: #10141e;
+      --bg-card: #151a27;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-subtle: rgba(255, 255, 255, 0.04);
+      --text: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #d97757;
+      --accent-bg: rgba(217, 119, 87, 0.12);
+      --mint: #10e583;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-base);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    /* 260px Densified Sidebar */
+    aside.sidebar {
+      width: 260px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px 16px 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
+    }
+    .brand-mark {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-title {
+      font-size: 0.94rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .nav-section {
+      margin-bottom: 20px;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0 10px;
+      margin-bottom: 6px;
+    }
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-btn {
+      width: 100%;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+    .nav-btn.active {
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-weight: 600;
+      border-color: rgba(217, 119, 87, 0.25);
+    }
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-icon {
+      width: 16px;
+      height: 16px;
+      stroke-width: 1.5;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.85;
+    }
+    .keycap {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* User Profile */
+    .user-footer {
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+    .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #242c3d;
+      color: #94a3b8;
+      font-size: 0.74rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-name { font-size: 0.82rem; font-weight: 600; }
+    .user-status { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* Interactive Main Workspace Content */
+    main.workspace-area {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .view-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 24px;
+    }
+    .view-title-group h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .view-title-group p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .view-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--mint);
+      background: rgba(16, 229, 131, 0.08);
+      border: 1px solid rgba(16, 229, 131, 0.2);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Dynamic Content Panels */
+    .view-panel {
+      display: none;
+      animation: fadeIn 0.2s ease forwards;
+    }
+    .view-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Grid & Cards for panels */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .card-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .card-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .card-meta {
+      font-size: 0.76rem;
+      color: var(--mint);
+    }
+
+    /* Table / List layout for views */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    .data-table th {
+      text-align: left;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+    .data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+    .status-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .status-badge.active { background: rgba(16, 229, 131, 0.1); color: var(--mint); }
+    .status-badge.queued { background: rgba(217, 119, 87, 0.1); color: var(--accent); }
+
+    /* Interactive Redline Hint Box */
+    .unslop-hint-box {
+      margin-top: auto;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .hint-chip {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Input B Refined: 260px Quiet Navigation Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand-row">
+        <div class="brand-mark">N</div>
+        <div class="brand-title">Nexus Platform</div>
+      </div>
+
+      <!-- Navigation Group 1: Core Platform -->
+      <div class="nav-section">
+        <div class="section-label">Platform</div>
+        <ul class="nav-list">
+          <li>
+            <button class="nav-btn active" data-target="panel-dashboard">
+              <span class="btn-left">
+                <svg class="nav-icon" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                <span>Dashboard</span>
+              </span>
+              <span class="keycap">⌘1</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-btn" data-target="panel-automations">
+              <span class="btn-left">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>Automations</span>
+              </span>
+              <span class="keycap">⌘2</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-btn" data-target="panel-analytics">
+              <span class="btn-left">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                <span>Analytics</span>
+              </span>
+              <span class="keycap">⌘3</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-btn" data-target="panel-workspaces">
+              <span class="btn-left">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Workspaces</span>
+              </span>
+              <span class="keycap">⌘4</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation Group 2: System Configuration -->
+      <div class="nav-section">
+        <div class="section-label">Configuration</div>
+        <ul class="nav-list">
+          <li>
+            <button class="nav-btn" data-target="panel-settings">
+              <span class="btn-left">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>Settings</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-btn" data-target="panel-vault">
+              <span class="btn-left">
+                <svg class="nav-icon" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Security vault</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="user-footer">
+      <div class="avatar">RC</div>
+      <div>
+        <div class="user-name">Ray</div>
+        <div class="user-status">Engineering Lead</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Interactive Workspace: Switches with navigation clicks or keyboard -->
+  <main class="workspace-area">
+    
+    <!-- 1. Dashboard View -->
+    <div id="panel-dashboard" class="view-panel active">
+      <div class="view-header">
+        <div class="view-title-group">
+          <h2>Platform Overview</h2>
+          <p>Real-time cluster health and execution statistics</p>
+        </div>
+        <span class="view-pill">SYSTEM NORMAL</span>
+      </div>
+
+      <div class="cards-grid">
+        <div class="panel-card">
+          <div class="card-label">Active pipelines</div>
+          <div class="card-value">28</div>
+          <div class="card-meta">+3 initialized today</div>
+        </div>
+        <div class="panel-card">
+          <div class="card-label">Average latency</div>
+          <div class="card-value">42ms</div>
+          <div class="card-meta">Within 99.9% SLA</div>
+        </div>
+        <div class="panel-card">
+          <div class="card-label">Node throughput</div>
+          <div class="card-value">12.4k</div>
+          <div class="card-meta">req/sec steady</div>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>SERVICE</th>
+            <th>REGION</th>
+            <th>STATUS</th>
+            <th>UPTIME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color: #fff; font-weight: 600;">Ingestion Gateway</td>
+            <td>us-east-1</td>
+            <td><span class="status-badge active">ONLINE</span></td>
+            <td>99.98%</td>
+          </tr>
+          <tr>
+            <td style="color: #fff; font-weight: 600;">Neural Redline Worker</td>
+            <td>eu-central-1</td>
+            <td><span class="status-badge active">ONLINE</span></td>
+            <td>100.00%</td>
+          </tr>
+          <tr>
+            <td style="color: #fff; font-weight: 600;">Cache Rebalance Node</td>
+            <td>ap-southeast-1</td>
+            <td><span class="status-badge queued">DRAINING</span></td>
+            <td>99.85%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2. Automations View -->
+    <div id="panel-automations" class="view-panel">
+      <div class="view-header">
+        <div class="view-title-group">
+          <h2>Scheduled Automations</h2>
+          <p>Automated design redline audits and CI/CD quality triggers</p>
+        </div>
+        <span class="view-pill">6 ACTIVE RUNS</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>PIPELINE NAME</th><th>SCHEDULE</th><th>TRIGGER</th><th>ACTION</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:#fff; font-weight:600;">Nightly PR Unslop Lint</td><td>Daily @ 02:00 UTC</td><td>GitHub Webhook</td><td>Auto-redline CSS</td></tr>
+          <tr><td style="color:#fff; font-weight:600;">WCAG Contrast Validator</td><td>On Commit</td><td>Git Push</td><td>Block failing PR</td></tr>
+          <tr><td style="color:#fff; font-weight:600;">Video Story Synthesizer</td><td>On Release</td><td>Manual / CLI</td><td>Render MP4 showcase</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. Analytics View -->
+    <div id="panel-analytics" class="view-panel">
+      <div class="view-header">
+        <div class="view-title-group">
+          <h2>Design System Telemetry</h2>
+          <p>Tracking component hygiene and token compliance across codebases</p>
+        </div>
+        <span class="view-pill">WCAG 98%</span>
+      </div>
+      <div class="cards-grid">
+        <div class="panel-card"><div class="card-label">Arbitrary pixels purged</div><div class="card-value">1,420</div><div class="card-meta">Replaced with 4px grid</div></div>
+        <div class="panel-card"><div class="card-label">Glow shadows eliminated</div><div class="card-value">84</div><div class="card-meta">1px hairline applied</div></div>
+        <div class="panel-card"><div class="card-label">Decorative emojis removed</div><div class="card-value">100%</div><div class="card-meta">Standardized vector set</div></div>
+      </div>
+    </div>
+
+    <!-- 4. Workspaces View -->
+    <div id="panel-workspaces" class="view-panel">
+      <div class="view-header">
+        <div class="view-title-group">
+          <h2>Team Workspaces</h2>
+          <p>Active repositories managed by the Antigravity unslop agent</p>
+        </div>
+        <span class="view-pill">4 REPOSITORIES</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>WORKSPACE</th><th>BRANCH</th><th>UNSLOP AUDIT</th><th>ACCESS</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:#fff; font-weight:600;">frontend-core-app</td><td>main</td><td><span class="status-badge active">COMPLIANT</span></td><td>Full Write</td></tr>
+          <tr><td style="color:#fff; font-weight:600;">marketing-landing-v2</td><td>staging</td><td><span class="status-badge queued">AUDITING</span></td><td>Full Write</td></tr>
+          <tr><td style="color:#fff; font-weight:600;">design-tokens-npm</td><td>v1.4.0</td><td><span class="status-badge active">SYNCED</span></td><td>Read Only</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5. Settings View -->
+    <div id="panel-settings" class="view-panel">
+      <div class="view-header">
+        <div class="view-title-group">
+          <h2>System Configuration</h2>
+          <p>Global design audit thresholds and Antigravity workspace integration</p>
+        </div>
+        <span class="view-pill">PRODUCTION CONFIG</span>
+      </div>
+      <div class="panel-card" style="margin-bottom: 16px;">
+        <div class="card-label">Grid Spacing Mode</div>
+        <div style="color: #fff; font-weight:600; margin-bottom: 4px;">Strict 4px / 8px Grid Enforcement</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Automatically flags arbitrary values like mt-[13px] or py-[17px].</div>
+      </div>
+      <div class="panel-card">
+        <div class="card-label">Chrome Color Strategy</div>
+        <div style="color: #fff; font-weight:600; margin-bottom: 4px;">Graphite Neutral Ramp (#0b0d11 → #151a27)</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Suppresses hue gradients on surfaces; isolates rich accents strictly to content charts.</div>
+      </div>
+    </div>
+
+    <!-- 6. Vault View -->
+    <div id="panel-vault" class="view-panel">
+      <div class="view-header">
+        <div class="view-title-group">
+          <h2>Enterprise Security Vault</h2>
+          <p>Role-based token access and API key lifecycle</p>
+        </div>
+        <span class="view-pill">ENCRYPTED</span>
+      </div>
+      <div class="panel-card">
+        <div class="card-label">Active Credentials</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); margin: 8px 0;">ANTIGRAVITY_SKILL_KEY_••••••••••••3F9A</div>
+        <div style="font-size: 0.78rem; color: var(--text-muted);">Scoped exclusively to workspace design sanitization passes.</div>
+      </div>
+    </div>
+
+    <!-- Redline Craft Footer -->
+    <div class="unslop-hint-box">
+      <span>Pass 03 Icons & Pass 05 Typography Active • Click links or press <span class="hint-chip">Cmd/Ctrl + 1..4</span> to switch sections</span>
+      <span class="hint-chip">Unslop Refined • Quiet Chrome</span>
+    </div>
+
+  </main>
+
+  <script>
+    // Interactive View Routing
+    const buttons = document.querySelectorAll('.nav-btn');
+    const panels = document.querySelectorAll('.view-panel');
+
+    function activatePanel(targetId) {
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-target') === targetId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      panels.forEach(p => {
+        if (p.id === targetId) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        activatePanel(target);
+      });
+    });
+
+    // Keyboard navigation: 1, 2, 3, 4
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === '1') activatePanel('panel-dashboard');
+      if (e.key === '2') activatePanel('panel-automations');
+      if (e.key === '3') activatePanel('panel-analytics');
+      if (e.key === '4') activatePanel('panel-workspaces');
+    });
+  </script>
+
+</body>
+</html>
